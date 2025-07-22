@@ -237,7 +237,7 @@ class GenerateXMLReport(models.TransientModel):
             ET.SubElement(document_status, 'SourceID').text = invoice.create_uid.login or 'admin'
             ET.SubElement(document_status, 'SourceBilling').text = source_billing or ''
 
-            ET.SubElement(invoice_element, 'Hash').text = invoice.signature_code or ''
+            ET.SubElement(invoice_element, 'Hash').text = invoice.invoice_sign or ''
             ET.SubElement(invoice_element, 'HashControl').text = "1"
             ET.SubElement(invoice_element, 'Period').text = str(invoice.invoice_date.month)
             ET.SubElement(invoice_element, 'InvoiceDate').text = str(invoice.invoice_date)
