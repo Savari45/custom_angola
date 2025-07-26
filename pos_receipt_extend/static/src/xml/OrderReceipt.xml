@@ -48,47 +48,34 @@
 
         <table style="border-collapse: collapse; font-size: 14px; margin: auto; width: 100%;">
             <thead>
-                <tr style="font-weight: 600; border-bottom: 1px solid black; border-top: 1px solid black; border-collapse: collapse;">
-                    <th>Qty</th>
-                    <th>Product</th>
-                    <th>Unit</th>
-                    <th>Subt</th>
-                    <th>Tax</th>
+              <tr style="font-weight: 600; border-bottom: 1px solid black; border-top: 1px solid black;">
+                    <th style="text-align: left; padding: 2px 4px;">Qty</th>
+                    <th style="text-align: left; padding: 2px 4px;">Product</th>
+                    <th style="text-align: center; padding: 2px 4px;">Unit</th>
+                    <th style="text-align: right; padding: 2px 4px;">Tax</th>
+                    <th style="text-align: right; padding: 2px 4px;">Subt</th>
+
                 </tr>
             </thead>
             <tbody>
-                <tr t-foreach="props.data.orderlines" t-as="line" t-key="line.id || loop.index" style="font-weight: normal;">
-                    <td style="padding: 2px;">
-                        <t t-esc="line.quantity"/>
-                    </td>
-                    <td style="padding: 2px;">
-                        <t t-esc="line.product_name"/>
-                    </td>
-                    <td style="padding: 2px;">
-                        <t t-esc="line.price"/>
-                    </td>
-                    <td style="padding: 2px;">
-                        <t t-esc="line.line_total"/>
-                    </td>
-                    <td style="padding: 2px;">
-                        <t t-if="line.line_taxes and line.line_taxes.length > 0">
-                            <t t-foreach="line.line_taxes" t-as="tax" t-key="tax.name">
-                                <div>
-                                    <t t-esc="tax.name"/>
-                                </div>
-                            </t>
-                        </t>
-                        <t t-else="">No Tax</t>
-                    </td>
-                </tr>
-            </tbody>
+        <tr t-foreach="props.data.orderlines" t-as="line" t-key="line.id || loop.index">
+            <td style="text-align: left; padding: 2px 4px;"><t t-esc="line.quantity"/></td>
+            <td style="text-align: left; padding: 2px 4px;"><t t-esc="line.product_name"/></td>
+            <td style="text-align: center; padding: 2px 4px;"><t t-esc="props.formatCurrency(line.unit)"/></td>
+            <td style="text-align: right; padding: 2px 4px;"><t t-esc="line.tax"/>%</td>
+            <td style="text-align: right; padding: 2px 4px;"><t t-esc="props.formatCurrency(line.subtotal)"/></td>
+        </tr>
+    </tbody>
         </table>
+        <br></br>
     </xpath>
           <xpath expr="//div[hasclass('after-footer')]" position="after">
-              <div>-------------------------------------</div>
+              <br></br>
+              <div>------------------------------------------------------------------------------</div>
                <div class="signature-code" t-if="props.data.headerData.signature_code">
                  <t t-esc="props.data.headerData.signature_code"/>
         </div>
+               <div>------------------------------------------------------------------------------</div>
           </xpath>
 </t>
 

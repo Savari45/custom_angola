@@ -14,7 +14,7 @@
 <odoo>
     <!-- Action to open wizard -->
     <record id="action_generate_xml_wizard" model="ir.actions.act_window">
-        <field name="name">Generate XML</field>
+        <field name="name">Generate SAF-T(AO) XML File</field>
         <field name="res_model">generate.xml.report</field>
         <field name="view_mode">form</field>
         <field name="target">new</field>
@@ -22,7 +22,7 @@
 
     <!-- Menu Item under Accounting > Customers -->
     <menuitem id="menu_generate_xml"
-              name="Generate XML"
+              name="Generate SAF-T(AO) XML File"
               parent="account.menu_finance_receivables"
               action="action_generate_xml_wizard"
               sequence="120"/>

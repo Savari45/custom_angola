@@ -6,7 +6,7 @@ class AccountMove(models.Model):
     def action_open_wizard(self):
         return {
             'type': 'ir.actions.act_window',
-            'name': 'Generate XML File',
+            'name': 'Generate SAF-T(AO) XML File',
             'res_model': 'generate.xml.report',
             'view_mode': 'form',
             'target': 'new',

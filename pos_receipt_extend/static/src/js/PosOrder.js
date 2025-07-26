@@ -12,30 +12,27 @@ patch(PosOrder.prototype, {
 
         result.headerData.signature_code = result.signature_code
         const orderlines = this.get_orderlines();
-       // Extract and structure tax details
         result.orderlines = orderlines.map((line) => {
-            const base_price = line.get_base_price ? line.get_base_price() : 0;
+            const qty = line.get_quantity();
+            const price = line.get_unit_price();
+            let tax_percent = 0;
             const prices = line.get_all_prices ? line.get_all_prices() : { taxesData: [] };
-
-            const tax_list = (prices.taxesData || []).map((taxData) => ({
-                name: taxData.tax.name,
-                amount: taxData.amount,
-                rate: base_price
-                    ? ((taxData.amount / base_price) * 100).toFixed(2) + "%"
-                    : "0.00%",
-            }));
+            if (prices.taxesData && prices.taxesData.length) {
+                // Sum all tax percentages for the line
+                tax_percent = prices.taxesData.reduce((acc, t) => acc + (t.tax.amount || 0), 0);
+            }
+            const subtotal = qty * price * (1 + tax_percent / 100);
 
             return {
                 id: line.id,
                 product_name: line.get_product().display_name,
-                quantity: line.get_quantity(),
-                price: line.get_unit_price(),
+                quantity: qty,
+                unit: price,
+                tax: tax_percent,
+                subtotal: subtotal,
                 discount: line.get_discount(),
-                line_total: line.get_quantity() * line.get_unit_price() * (1 - line.get_discount() / 100),
-                line_taxes: tax_list,
             };
         });
-
         // Add partner details
         const partner = this.get_partner();
         if (partner) {

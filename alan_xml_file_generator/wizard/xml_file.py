@@ -286,6 +286,9 @@ class GenerateXMLReport(models.TransientModel):
             ET.SubElement(invoice_element,
                           'MovementStartTime').text = f"{invoice.create_date.strftime('%Y-%m-%dT%H:%M:%S')}"
 
+            withholding_tax_amount = 0.0
+            withholding_tax_type = None
+
             for line in invoice.invoice_line_ids:
 
                  # Add the invoice lines
@@ -310,38 +313,41 @@ class GenerateXMLReport(models.TransientModel):
                     ET.SubElement(tax_element, 'TaxPercentage').text = str(tax.name)
                 ET.SubElement(line_element, 'SettlementAmount').text = '00'
 
-            withholding_tax_amount = 0.0
-            withholding_tax_type = None
-
-            for line in invoice.invoice_line_ids:
-                line_base = line.price_subtotal  # Base amount for the line
+                # Calculate withholding tax - ONLY for service taxes
+                line_base = line.price_subtotal
                 for tax in line.tax_ids:
-                    if tax.amount < 0:
-                        # Calculate actual withholding amount (percentage)
-                        if tax.amount_type == 'percent':
-                            tax_amount = abs(line_base * tax.amount / 100.0)
-                            withholding_tax_type = "IRT"
-                        elif tax.amount_type == 'fixed':
-                            tax_amount = abs(tax.amount)
-                            withholding_tax_type = "FT"
-                        elif tax.amount_type == 'group':
-                            tax_amount = 0  # You may need to loop child taxes here
-                            withholding_tax_type = "OTH"
-                        else:
-                            tax_amount = 0
+                     # Check if it's a service tax (regardless of positive or negative amount)
+                     if tax.tax_scope == 'service':
+                         if tax.amount_type == 'percent':
+                             # For percentage taxes, calculate based on the line base
+                             tax_amount = abs(line_base * tax.amount / 100.0)
+                             withholding_tax_type = "IRT"
+                         elif tax.amount_type == 'fixed':
+                             # For fixed taxes, use the absolute amount
+                             tax_amount = abs(tax.amount)
+                             withholding_tax_type = "FT"
+                         elif tax.amount_type == 'division':
+                             # For division taxes (price included)
+                             tax_amount = abs(line_base * tax.amount / (100 + tax.amount))
+                             withholding_tax_type = "IRT"
+                         else:
+                             # For other types, try to get the computed amount
+                             tax_amount = abs(
+                                 line.price_total - line.price_subtotal) if line.price_total != line.price_subtotal else 0
+                             withholding_tax_type = "OTH"
 
-                        withholding_tax_amount += tax_amount
-            # Document totals
+                         withholding_tax_amount += tax_amount
+
+        # Document totals
             document_totals = ET.SubElement(invoice_element, "DocumentTotals")
             ET.SubElement(document_totals, "TaxPayable").text = f"{invoice.amount_tax:.2f}"
             ET.SubElement(document_totals, "NetTotal").text = f"{invoice.amount_untaxed:.2f}"
             ET.SubElement(document_totals, "GrossTotal").text = f"{invoice.amount_total:.2f}"
 
-            # Only create WithholdingTax tag if there's an amount
-            if withholding_tax_amount:
-                withholding_tax = ET.SubElement(invoice_element, "WithholdingTax")
-                ET.SubElement(withholding_tax, "WithholdingTaxType").text = withholding_tax_type or "IRT"
-                ET.SubElement(withholding_tax, "WithholdingTaxAmount").text = f"{withholding_tax_amount:.2f}"
+
+            withholding_tax = ET.SubElement(invoice_element, "WithholdingTax")
+            ET.SubElement(withholding_tax, "WithholdingTaxType").text = withholding_tax_type or "IRT"
+            ET.SubElement(withholding_tax, "WithholdingTaxAmount").text = f"{withholding_tax_amount:.2f}"
     def action_generate_report(self):
         """
         Generates an XML report for both sales and purchase with accounting details and saves it to a file.
