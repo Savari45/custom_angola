@@ -24,6 +24,7 @@ class SignatureVerifier(models.Model):
 
     @api.model
     def create(self, vals):
+
         encryption = self.env['report.encryption'].search([], limit=1)
         if encryption:
             vals.setdefault('private_key', encryption.private_key or '')
@@ -31,6 +32,7 @@ class SignatureVerifier(models.Model):
         return super(SignatureVerifier, self).create(vals)
 
     def action_view_content(self):
+
         for rec in self:
             try:
                 if not rec.txt_file:

@@ -13,7 +13,7 @@
     'license': "AGPL-3",
     'depends': ['base', 'sale', 'account'],
     'data': [
-        'data/automation_rule.xml',
+          'data/automation_rule.xml',
         'security/ir.model.access.csv',
         'security/report_encryption_security.xml',
         'security/report_encryption_rules.xml',
@@ -21,8 +21,8 @@
         'views/encryption_views.xml',
         'views/res_users_views.xml',
         'report/inherit_invoice.xml',
-        'views/signature_verifier_view.xml',
-        # 'views/inherit_account_views.xml',
+         'views/signature_verifier_view.xml',
+         'views/inherit_account_views.xml',
 
     ],
     'images': ['static/description/banner.gif'],

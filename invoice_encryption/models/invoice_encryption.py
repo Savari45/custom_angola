@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields,api
 from cryptography.hazmat.primitives.asymmetric import padding
 from cryptography.hazmat.primitives import serialization, hashes
 from cryptography.hazmat.backends import default_backend
@@ -24,7 +24,20 @@ class AccountMove(models.Model):
     invoice_hash = fields.Text(string='Hash')
     signed_content = fields.Text(string='Signed Content')
 
+
+    # def action_post(self):
+    #     res = super().action_post()
+    #     for move in self:
+    #         _logger.info("🧾 Checking move %s: type=%s, sign=%s", move.name, move.move_type, move.invoice_sign)
+    #         if move.move_type in ('out_invoice', 'out_refund', 'entry'):
+    #             _logger.info("✅ Calling action_report for %s", move.name)
+    #             move.action_report()
+    #     return res
+
+
     def action_report(self):
+
+        _logger.info("Invoice signing process started")
         """Generate digital signatures for invoices following SAF-T (PT) requirements."""
         try:
             previous_hash = None
@@ -42,7 +55,7 @@ class AccountMove(models.Model):
             encryption = self.env['report.encryption'].search([], limit=1)
             if not encryption or not encryption.private_key:
                 raise ValueError("No encryption keys found in report.encryption model.")
-
+            _logger.info("Encryption keys loaded: %s", encryption)
             try:
                 private_key = serialization.load_pem_private_key(
                     encryption.private_key.encode('utf-8'),
@@ -53,7 +66,15 @@ class AccountMove(models.Model):
                 raise ValueError(f"Failed to load private key: {str(e)}")
 
             for move in self:
-                if move.invoice_sign or move.move_type not in ['out_invoice', 'out_refund']:
+                # Check if this move should be signed
+                _logger.info("🧾 Checking move %s: type=%s, sign=%s", move.name, move.move_type, move.invoice_sign)
+
+                if move.move_type not in ['out_invoice', 'out_refund']:
+                    _logger.debug("Move %s is not an invoice or credit note, skipping", move.name)
+                    continue
+
+                if move.state != 'posted':
+                    _logger.debug("Move %s is not posted, skipping", move.name)
                     continue
 
                 system_date_str = move.create_date.strftime('%Y-%m-%dT%H:%M:%S')
@@ -120,6 +141,7 @@ class AccountMove(models.Model):
                 signature_b64[20],
                 signature_b64[30]
             ]
+            _logger.info("Signature code characters: %s", extracted_chars)
             return f"{''.join(extracted_chars)}-Processed by validated program no."
         except Exception as e:
             _logger.error("Failed to generate signature code: %s", str(e))
