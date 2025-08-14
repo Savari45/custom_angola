@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="inherit_customer_views_form" model="ir.ui.view">
+        <field name="name">inherit_partner</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+       <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position ="attributes">
+                    <attribute name="required">1</attribute>
+                </xpath>
+<!--           <group>-->
+<!--                <xpath expr="//field[@name='res.partner.id']/list" position ="after">-->
+<!--                    <field name="customercode" optional="show"/>-->
+<!--                </xpath>-->
+<!--           </group>-->
+        </field>
+    </record>
+</odoo>
