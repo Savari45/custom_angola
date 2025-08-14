@@ -1,0 +1,4 @@
+<!--
+id,name,model_id:id,group_id,perm_read,perm_create,perm_write,perm_unlink
+access_digital_contact_user,digital_contact_user,model_digital_contact,,1,1,1,1
+>
