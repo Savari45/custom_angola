@@ -1,0 +1,72 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_ao
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-01 00:00+0000\n"
+"PO-Revision-Date: 2024-01-01 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Portuguese (Angola)\n"
+"Language: pt_AO\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: l10n_ao
+#: model:ir.ui.menu,name:l10n_ao.menu_angola_localization
+msgid "Angola"
+msgstr "Angola"
+
+#. module: l10n_ao
+#: model:account.tax,name:l10n_ao.ao_iva_venda_14
+msgid "IVA Venda 14%"
+msgstr "IVA Venda 14%"
+
+#. module: l10n_ao
+#: model:account.tax,name:l10n_ao.ao_iva_compra_14
+msgid "IVA Compra 14%"
+msgstr "IVA Compra 14%"
+
+#. module: l10n_ao
+#: model:account.tax,name:l10n_ao.ao_iva_venda_0
+msgid "IVA Venda 0%"
+msgstr "IVA Venda 0%"
+
+#. module: l10n_ao
+#: model:account.tax,name:l10n_ao.ao_iva_compra_0
+msgid "IVA Compra 0%"
+msgstr "IVA Compra 0%"
+
+#. module: l10n_ao
+#: model:account.tax,name:l10n_ao.ao_iva_venda_exento
+msgid "IVA Venda Isento"
+msgstr "IVA Venda Isento"
+
+#. module: l10n_ao
+#: model:account.tax,name:l10n_ao.ao_iva_compra_exento
+msgid "IVA Compra Isento"
+msgstr "IVA Compra Isento"
+
+#. module: l10n_ao
+#: model:account.tax,name:l10n_ao.ao_iva_venda_reduzido
+msgid "IVA Venda Taxa Reduzida"
+msgstr "IVA Venda Taxa Reduzida"
+
+#. module: l10n_ao
+#: model:account.tax,name:l10n_ao.ao_iva_compra_reduzido
+msgid "IVA Compra Taxa Reduzida"
+msgstr "IVA Compra Taxa Reduzida"
+
+#. module: l10n_ao
+#: model:account.tax,name:l10n_ao.ao_imposto_rendimentos
+msgid "Imposto sobre Rendimentos"
+msgstr "Imposto sobre Rendimentos"
+
+#. module: l10n_ao
+#: model:account.tax,name:l10n_ao.ao_taxa_selo
+msgid "Taxa de Selo"
+msgstr "Taxa de Selo"

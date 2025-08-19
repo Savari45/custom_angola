@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Account Groups for Angola -->
+        <record id="ao_account_group_1" model="account.group">
+            <field name="name">1 - Imobilizações</field>
+            <field name="code_prefix_start">1</field>
+            <field name="code_prefix_end">1</field>
+		</record>	
+	
+        <record id="ao_account_group_2" model="account.group">
+            <field name="name">2 - Inventários e Contas a Receber</field>
+            <field name="code_prefix_start">2</field>
+            <field name="code_prefix_end">2</field>
+		</record>
+
+        <record id="ao_account_group_3" model="account.group">
+            <field name="name">3 - Contas a Receber e a Pagar</field>
+            <field name="code_prefix_start">3</field>
+            <field name="code_prefix_end">3</field>
+		</record>
+
+        <record id="ao_account_group_4" model="account.group">
+            <field name="name">4 - Investimentos Financeiros</field>
+            <field name="code_prefix_start">4</field>
+            <field name="code_prefix_end">4</field>
+		</record>
+
+        <record id="ao_account_group_5" model="account.group">
+            <field name="name">5 - Capitais Próprios</field>
+            <field name="code_prefix_start">5</field>
+            <field name="code_prefix_end">5</field>
+		</record>
+
+        <record id="ao_account_group_6" model="account.group">
+            <field name="name">6 - Proveitos e Ganhos</field>
+            <field name="code_prefix_start">6</field>
+            <field name="code_prefix_end">6</field>
+		</record>
+
+        <record id="ao_account_group_7" model="account.group">
+            <field name="name">7 - Custos e Perdas</field>
+            <field name="code_prefix_start">7</field>
+            <field name="code_prefix_end">7</field>
+		</record>
+
+        <record id="ao_account_group_8" model="account.group">
+            <field name="name">8 - Resultados</field>
+            <field name="code_prefix_start">8</field>
+            <field name="code_prefix_end">8</field>
+		</record>
+
+        <!-- Main Accounts Structure -->
+        <record id="ao_account_1111" model="account.account">
+            <field name="code">1111</field>
+            <field name="name">Terrenos em bruto</field>
+            <field name="account_type">asset_non_current</field>
+            <field name="group_id" ref="ao_account_group_1"/>
+		</record>
+
+        <record id="ao_account_1112" model="account.account">
+            <field name="code">1112</field>
+            <field name="name">Terrenos com arranjos</field>
+            <field name="account_type">asset_non_current</field>
+            <field name="group_id" ref="ao_account_group_1"/>
+		</record>
+
+        <record id="ao_account_31121" model="account.account">
+            <field name="code">31121</field>
+            <field name="name">Clientes - Nacionais</field>
+            <field name="account_type">asset_receivable</field>
+            <field name="reconcile">True</field>
+            <field name="group_id" ref="ao_account_group_3"/>
+		</record>
+
+        <record id="ao_account_32121" model="account.account">
+            <field name="code">32121</field>
+            <field name="name">Fornecedores - Nacionais</field>
+            <field name="account_type">liability_payable</field>
+            <field name="reconcile">True</field>
+            <field name="group_id" ref="ao_account_group_3"/>
+		</record>
+
+        <record id="ao_account_2121" model="account.account">
+		<field name="code">2121</field>
+		<field name="name">Aquisição mercadorias</field>
+            <field name="account_type">expense</field>
+            <field name="group_id" ref="ao_account_group_2"/>
+		</record>
+
+        <record id="ao_account_6111" model="account.account">
+            <field name="code">6111</field>
+            <field name="name">Vendas - Mercado nacional</field>
+            <field name="account_type">income</field>
+            <field name="group_id" ref="ao_account_group_6"/>
+		</record>
+
+        <record id="ao_account_6621" model="account.account">
+            <field name="code">6621</field>
+            <field name="name">Ganhos de câmbio</field>
+            <field name="account_type">income</field>
+            <field name="group_id" ref="ao_account_group_6"/>
+		</record>
+
+        <record id="ao_account_7621" model="account.account">
+            <field name="code">7621</field>
+            <field name="name">Perdas de câmbio</field>
+            <field name="account_type">expense</field>
+            <field name="group_id" ref="ao_account_group_7"/>
+		</record>
+
+        <record id="ao_account_4311" model="account.account">
+		<field name="code">4311</field>
+            <field name="name">Banco - Conta Corrente</field>
+            <field name="account_type">asset_current</field>
+            <field name="group_id" ref="ao_account_group_4"/>
+		</record>
+
+        <record id="ao_account_4511" model="account.account">
+		<field name="code">4511</field>
+		<field name="name">Caixa</field>
+            <field name="account_type">asset_current</field>
+            <field name="group_id" ref="ao_account_group_4"/>
+		</record>
+
+    </data>
+</odoo>

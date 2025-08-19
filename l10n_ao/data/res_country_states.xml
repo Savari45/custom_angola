@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!-- 
+    Copyright (C) 2019 - Paulo Matos - batalhadematos@gmail.com
+-->
+
+    <data noupdate="1">
+        <!-- Angola Country States / Provinces -->
+        <record id="state_ao_bgo" model="res.country.state">
+            <field name="name">Bengo</field>
+            <field name="code">aoBGO</field>
+            <field name="country_id" ref="base.ao"/>
+        </record>
+        <record id="state_ao_bga" model="res.country.state">
+            <field name="name">Benguela</field>
+            <field name="code">aoBGA</field>
+            <field name="country_id" ref="base.ao"/>
+        </record>
+        <record id="state_ao_bie" model="res.country.state">
+            <field name="name">Bié</field>
+            <field name="code">aoBIE</field>
+            <field name="country_id" ref="base.ao"/>
+        </record>		
+		<record id="state_ao_cab" model="res.country.state">
+            <field name="name">Cabinda</field>
+            <field name="code">aoCAB</field>
+            <field name="country_id" ref="base.ao"/>
+        </record>
+        <record id="state_ao_kkg" model="res.country.state">
+            <field name="name">Cuando Cubango</field>
+            <field name="code">aoKKG</field>
+            <field name="country_id" ref="base.ao"/>
+        </record>		
+        <record id="state_ao_cnn" model="res.country.state">
+            <field name="name">Cunene</field>
+            <field name="code">aoCNN</field>
+            <field name="country_id" ref="base.ao"/>
+        </record>	
+		<record id="state_ao_hbo" model="res.country.state">
+            <field name="name">Huambo</field>
+            <field name="code">aoHBO</field>
+            <field name="country_id" ref="base.ao"/>
+        </record>
+        <record id="state_ao_hla" model="res.country.state">
+            <field name="name">Huíla</field>
+            <field name="code">aoHLA</field>
+            <field name="country_id" ref="base.ao"/>
+        </record>		
+        <record id="state_ao_knt" model="res.country.state">
+            <field name="name">Kwanza Norte</field>
+            <field name="code">aoKNT</field>
+            <field name="country_id" ref="base.ao"/>
+        </record>		
+		<record id="state_ao_ksl" model="res.country.state">
+            <field name="name">Kwanza Sul</field>
+            <field name="code">aoKSL</field>
+            <field name="country_id" ref="base.ao"/>
+        </record>  
+        <record id="state_ao_lad" model="res.country.state">
+            <field name="name">Luanda</field>
+            <field name="code">aoLAD</field>
+            <field name="country_id" ref="base.ao"/>
+        </record>
+        <record id="state_ao_lnt" model="res.country.state">
+            <field name="name">Lunda Norte</field>
+            <field name="code">aoLNT</field>
+            <field name="country_id" ref="base.ao"/>
+        </record>
+        <record id="state_ao_lsl" model="res.country.state">
+            <field name="name">Lunda Sul</field>
+            <field name="code">aoLSL</field>
+            <field name="country_id" ref="base.ao"/>
+        </record>
+        <record id="state_ao_mal" model="res.country.state">
+            <field name="name">Malanje</field>
+            <field name="code">aoMAL</field>
+            <field name="country_id" ref="base.ao"/>
+        </record>
+        <record id="state_ao_mox" model="res.country.state">
+            <field name="name">Moxico</field>
+            <field name="code">aoMOX</field>
+            <field name="country_id" ref="base.ao"/>
+        </record>
+        <record id="state_ao_nam" model="res.country.state">
+            <field name="name">Namibe</field>
+            <field name="code">aoNAM</field>
+            <field name="country_id" ref="base.ao"/>
+        </record>
+        <record id="state_ao_uig" model="res.country.state">
+            <field name="name">Uíge</field>
+            <field name="code">aoUIG</field>
+            <field name="country_id" ref="base.ao"/>
+        </record>
+        <record id="state_ao_zai" model="res.country.state">
+            <field name="name">Zaire</field>
+            <field name="code">aoZAI</field>
+            <field name="country_id" ref="base.ao"/>
+        </record>		
+    </data>
+</odoo>

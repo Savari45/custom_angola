@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Demo Company for Angola -->
+        <record id="demo_company_ao" model="res.company">
+            <field name="name">Empresa Demo Angola</field>
+            <field name="country_id" ref="base.ao"/>
+            <field name="currency_id" ref="base.AOA"/>
+            <field name="chart_template_id" ref="l10n_ao.chart_template_ao"/>
+            <field name="vat">AO123456789</field>
+            <field name="street">Rua da Independência, 123</field>
+            <field name="city">Luanda</field>
+            <field name="zip">1000</field>
+            <field name="phone">+244 222 123 456</field>
+            <field name="email">info@empresademo.ao</field>
+        </record>
+    </data>
+</odoo>

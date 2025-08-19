@@ -1,0 +1,7 @@
+"id","name","applicability","country_id/id"
+"tag_iva14","IVA 14% Sales","taxes","base.ao"
+"tag_compiva14","IVA 14% Purchases","taxes","base.ao"
+"tag_iva14","IVA14 Vendas","taxes","base.ao"
+"tag_iva0","IVA0 Vendas","taxes","base.ao"
+"tag_compiva14","IVA14 Compras","taxes","base.ao"
+"tag_compiva0","IVA0 Compras","taxes","base.ao"
