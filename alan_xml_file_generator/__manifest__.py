@@ -19,6 +19,7 @@
         - User-friendly wizard to generate XML
         - Secure attachment management inside Odoo
         - Works seamlessly with Odoo's Accounting and Sales modules
+        - work xml file 
 
         Developed and maintained by Alan Technologies.
 
