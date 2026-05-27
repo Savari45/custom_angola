@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Odoo Module by Cloud Next Solutions" />
+    <meta name="author" content="Cloud Next Solutions" />
+     <title>Auto Fill - Odoo Module by Cloud Next Solutions</title>
+
+    <!-- Fonts & Styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #1b6dbe;
+            --accent-color: #ff824a;
+            --text-dark: #212529;
+            --bg-light: #f8f9fb;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            background-color: #fff;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Header */
+        .header {
+            padding: 20px 0;
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .logo img {
+            height: 160px;
+            width: 160px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 100px 20px 70px;
+            background: linear-gradient(180deg, #e8f1fa 0%, #ffffff 100%);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .hero h1 span {
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-top: 15px;
+            color: #555;
+        }
+
+        /* Section Headings */
+        .section-heading {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-heading h2 {
+            color: var(--primary-color);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-heading hr {
+            border: 2px solid var(--primary-color);
+            width: 80px;
+            margin: 1rem auto;
+        }
+
+        /* Features */
+        .feature-box {
+            background: var(--bg-light);
+            border-top: 5px solid var(--primary-color);
+            padding: 40px 30px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .feature-box b {
+            color: var(--primary-color);
+        }
+
+        /* Screenshot Section */
+        .screenshot-box {
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.08);
+            border-radius: 10px;
+            margin-bottom: 40px;
+            padding: 25px;
+        }
+
+        .screenshot-box h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .screenshot-box p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .screenshot-box img {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        /* Services */
+        .service-box {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .service-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+        }
+
+        .service-box img {
+            width: 70px;
+            height: 70px;
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 20px;
+        }
+
+        .service-box h5 {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        /* Call to Action */
+        .cta {
+            background: var(--bg-light);
+            border-radius: 10px;
+            text-align: center;
+            padding: 80px 20px;
+            margin-top: 50px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .cta h3 {
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        .cta a {
+            display: inline-block;
+            background: var(--primary-color);
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .cta a:hover {
+            background: var(--accent-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            background-color: #1b6dbe;
+            color: white;
+            font-weight: 500;
+            margin-top: 80px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header text-center">
+        <div class="container">
+            <div class="logo">
+                <img src="cns_logo.jpeg"  style="height: 160px;width:160px;" alt="CNS Logo">
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1><span>Auto Fill</span> - Product Name Suggestions</h1>
+            <p>Automatically list similar or existing product names while creating a new product to avoid duplicates.</p>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about py-5">
+        <div class="container">
+             <div class="section-heading">
+                <h2>About the Module</h2>
+                <hr>
+                <p class="fs-5 text-muted">
+                    The <b>Auto Fill</b> module helps prevent duplicate product creation by suggesting existing product names that closely match what you're typing.
+                    This feature ensures data consistency and avoids multiple records with the same or similar names.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features py-5 bg-light">
+        <div class="container">
+            <div class="section-heading">
+                <h2>Key Features</h2>
+                <hr>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-box">
+                       <p><b>Auto Suggestion:</b> As you type a new product name, the system instantly lists similar or matching products.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-box">
+                          <p><b>Duplicate Prevention:</b> Avoids creation of multiple products with the same or confusingly similar names.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-box">
+                         <p><b>User Friendly:</b> Works seamlessly within the Odoo product form with instant suggestions, no configuration needed.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots -->
+    <section class="screenshots py-5">
+        <div class="container">
+            <div class="section-heading">
+              <h2>How It Works</h2>
+                <hr>
+            </div>
+            <div class="screenshot-box">
+                <h3>Product Creation Screen with Auto Suggestion</h3>
+                <p>When typing the product name, the system shows a dropdown of existing products with similar alphabets or names.</p>
+                <img src="product_create_image.png" alt="Auto Fill Product Suggestion">
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services py-5 bg-light">
+        <div class="container">
+            <div class="section-heading">
+                <h2>Our Odoo Services</h2>
+                <hr>
+            </div>
+            <div class="row">
+                <div class="col-md-4"><div class="service-box"><img src="customization.png" style="background-color:#56a2af;"><h5>Odoo Customization</h5></div></div>
+                <div class="col-md-4"><div class="service-box"><img src="implementation.png" style="background-color:#af56ae;"><h5>Odoo Implementation</h5></div></div>
+                <div class="col-md-4"><div class="service-box"><img src="support.png" style="background-color:#ff6b90;"><h5>Odoo Support</h5></div></div>
+                <div class="col-md-4"><div class="service-box"><img src="integration.png" style="background-color:#cd6280;"><h5>Odoo Integration</h5></div></div>
+                <div class="col-md-4"><div class="service-box"><img src="migration.png" style="background-color:#5f54ff;"><h5>Odoo Migration</h5></div></div>
+                <div class="col-md-4"><div class="service-box"><img src="consultancy.png" style="background-color:#a5a72f;"><h5>Odoo Consultancy</h5></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="cta">
+        <div class="container">
+            <h3>Got questions or need help? Get in touch.</h3>
+            <a href="mailto:hello@cloudnextsolutions.com">hello@cloudnextsolutions.com</a>
+            <h3>+91 93448 21195</h3>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        © 2025 Cloud Next Solutions — All Rights Reserved.
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

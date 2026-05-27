@@ -4,7 +4,7 @@
     'author' : 'Digital',
     'category' :'Customer',
     'license' : 'LGPL-3',
-    'depends' : ['base'],
+    'depends' : ['base','auto_fill'],
     'summary' : 'Set rules to customer',
     'data' : [
         'views/customerrule.xml',

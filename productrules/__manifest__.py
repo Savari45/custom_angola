@@ -4,7 +4,7 @@
     'author' : 'Digital',
     'category' :'Product',
     'license' : 'LGPL-3',
-    'depends' : ['stock'],
+    'depends' : ['stock','auto_fill'],
     'summary' : 'Set rules to product',
     'data' : [
         'views/product_inherit_view.xml',

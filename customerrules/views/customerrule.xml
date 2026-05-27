@@ -14,8 +14,18 @@
                 </xpath>
 
                 <xpath expr="//field[@name='name']" position ="before">
-                    <field name="customercode" placeholder="customer code" required="1"/>
+                    <field name="customercode" placeholder="customer code" required="1" widget="auto_fill"/>
                 </xpath>
         </field>
     </record>
+<!--    partner list view -->
+      <record id="res_partner_view_tree_add_customer_code" model="ir.ui.view">
+            <field name="name">res.partner.list.inherit.add.customer_code</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='avatar_128']" position="before">
+                     <field name="customercode" string="Customer Code" width="50"/>
+                </xpath>
+            </field></record>
 </odoo>
