@@ -4,7 +4,7 @@ from odoo.exceptions import ValidationError
 class CustomerTemplate(models.Model):
     _inherit = 'res.partner'
 
-    # customercode=fields.Char(string='Customercode')
+    customercode=fields.Char(string='Customercode')
 
 
     @api.onchange('vat')

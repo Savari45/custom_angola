@@ -8,11 +8,14 @@
                 <xpath expr="//field[@name='name']" position ="attributes">
                     <attribute name="required">1</attribute>
                 </xpath>
-<!--           <group>-->
-<!--                <xpath expr="//field[@name='res.partner.id']/list" position ="after">-->
-<!--                    <field name="customercode" optional="show"/>-->
-<!--                </xpath>-->
-<!--           </group>-->
+                <xpath expr="//field[@name='vat']" position ="attributes">
+                    <attribute name="required">1</attribute>
+                     <attribute name="invisible">parent_id</attribute>
+                </xpath>
+
+                <xpath expr="//field[@name='name']" position ="before">
+                    <field name="customercode" placeholder="customer code" required="1"/>
+                </xpath>
         </field>
     </record>
 </odoo>
