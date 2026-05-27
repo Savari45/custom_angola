@@ -1,7 +1,7 @@
 
 {
     'name': "Advanced POS Receipt",
-    "version": "18.0.1.0.0",
+    'version': '19.0.1.0.0',
     "category": "Point of Sale",
     "summary": "Advanced POS Receipt with Customer Details and Invoice Details",
     "description": """Advanced POS Receipt with Customer Details and Invoice 

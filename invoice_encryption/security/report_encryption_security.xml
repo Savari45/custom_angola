@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+   <record id="privilege_report_encryption" model="res.groups.privilege">
+        <field name="name">Report Encryption</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+    </record>
+
+    <!-- Group -->
     <record id="group_can_view_encryption" model="res.groups">
         <field name="name">Can View Report Encryption</field>
-        <field name="category_id" ref="base.module_category_hidden"/>
-        <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+        <field name="privilege_id" ref="privilege_report_encryption"/>
+        <field name="user_ids" eval="[(4, ref('base.user_admin'))]"/>
     </record>
+
 </odoo>

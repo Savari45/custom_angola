@@ -4,14 +4,14 @@
     'description': """
         
     """,
-    'version': '18.0.1.0.0',
+     'version': '19.0.1.0.0',
     'category': 'Sales',
     'author': 'Alan Technologies',
     'maintainer': 'Alan Technologies',
     'company': 'Alan Technologies',
     'website': "https://alantechnologies.in/",
     'license': "AGPL-3",
-    'depends': ['base', 'sale', 'account'],
+    'depends': ['base', 'sale', 'account','base_automation'],
     'data': [
           'data/automation_rule.xml',
         'security/ir.model.access.csv',

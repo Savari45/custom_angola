@@ -33,7 +33,7 @@
     'support': 'alantechnologies2022@gmail.com',
     "license": "AGPL-3",
     'category': 'Accounting',
-    'version': '18.0.1.0.0',
+    'version': '19.0.1.0.0',
     'depends': ['base', 'sale', 'account'],
     'data': [
         'wizard/xml_file.xml',

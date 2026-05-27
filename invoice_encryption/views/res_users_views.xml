@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="base.view_users_form"/>
         <field name="arch" type="xml">
              <xpath expr="//sheet" position="inside">
-                <field name="groups_id" invisible="1"/>
+                <field name="group_ids" invisible="1"/>
                 <field name="can_view_encryption" invisible="1"/>
             </xpath>
         </field>

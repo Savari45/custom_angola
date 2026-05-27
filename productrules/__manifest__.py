@@ -1,6 +1,6 @@
 {
     'name' : 'Product Rules',
-    'version' : '18.0.0.1',
+     'version': '19.0.1.0.0',
     'author' : 'Digital',
     'category' :'Product',
     'license' : 'LGPL-3',
