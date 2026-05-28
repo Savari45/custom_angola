@@ -1,4 +1,2 @@
-<!--
-id,name,model_id:id,group_id,perm_read,perm_create,perm_write,perm_unlink
-access_digital_contact_user,digital_contact_user,model_digital_contact,,1,1,1,1
->
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+productrules.access_product_code_master,access_product_code_master,productrules.model_product_code_master,base.group_user,1,1,1,1

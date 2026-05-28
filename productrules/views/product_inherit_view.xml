@@ -1,5 +1,47 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
+<!--    product code master views-->
+    <record id="product_code_master_form_view" model="ir.ui.view">
+        <field name="name">product.code.master.form</field>
+        <field name="model">product.code.master</field>
+        <field name="arch" type="xml">
+            <form string="Product Code Master">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Enter Product Code"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="product_name" placeholder="Enter Product Name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="product_code_master_tree_view" model="ir.ui.view">
+        <field name="name">product.code.master.tree</field>
+        <field name="model">product.code.master</field>
+        <field name="arch" type="xml">
+            <list string="Product Code Master">
+                <field name="name"/>
+                <field name="product_name"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="product_code_master_search_view" model="ir.ui.view">
+        <field name="name">product.code.master.search</field>
+        <field name="model">product.code.master</field>
+        <field name="arch" type="xml">
+            <search string="Search Product Codes">
+                <field name="name"/>
+                <field name="product_name"/>
+            </search>
+        </field>
+    </record>
+
 <!--    product template form view-->
     <record id="inherit_product_views_form" model="ir.ui.view">
         <field name="name">inherit_product</field>
@@ -16,15 +58,15 @@
                 <div class="oe_title">
 
                     <!-- Product Code -->
-                    <label for="product_code"
+                    <label for="product_code_id"
                            string="Product Code"/>
 
                     <div class="mb-3">
 
-                        <field name="product_code"
-                               placeholder="Product code"
-                               required="1"
-                               widget="auto_fill"/>
+                         <field name="product_code_id"
+       widget="product_code_display"
+       options="{'no_create_edit': False}"
+       placeholder="Select or Create Product Code"/>
 
                     </div>
 
@@ -62,7 +104,7 @@
         <field name="inherit_id" ref="product.product_template_tree_view"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='is_favorite']" position="before">
-                <field name="product_code" width="40"/>
+                <field name="product_code_name" string="Product Code"/>
             </xpath>
         </field>
     </record>
@@ -89,15 +131,16 @@
                 <div class="oe_title">
 
                     <!-- Product Code -->
-                    <label for="product_code"
+                    <label for="product_code_id"
                            string="Product Code"/>
 
                     <div class="mb-3">
 
-                        <field name="product_code"
-                               placeholder="Product code"
-                               required="1"
-                               widget="auto_fill"/>
+                      <field name="product_code_id"
+       widget="product_code_display"
+       options="{'no_create_edit': False}"
+       placeholder="Select or Create Product Code"/>
+
 
                     </div>
 
@@ -137,7 +180,7 @@
         <field name="inherit_id" ref="product.product_product_tree_view"/>
         <field name="arch" type="xml">
             <field name="is_favorite" position="before">
-                    <field name="product_code" width="40"/>
+                    <field name="product_code_name" string="Product Code"/>
             </field>
         </field></record>
 
