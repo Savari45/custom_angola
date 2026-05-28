@@ -81,14 +81,15 @@ class AccountMove(models.Model):
                 amount_str = "{:.2f}".format(move.amount_total)
 
                 content_parts = [
-                    str(move.invoice_date),
-                    system_date_str,
-                    move.name,
-                    amount_str,
+                    str(move.invoice_date or ''),
+                    str(system_date_str or ''),
+                    str(move.name or ''),
+                    str(amount_str or ''),
                     ""
                 ]
+
                 if previous_hash:
-                    content_parts.insert(-1, previous_hash)
+                    content_parts.insert(-1, str(previous_hash))
 
                 content = ";".join(content_parts)
                 out_content = content.encode('utf-8')
@@ -113,7 +114,9 @@ class AccountMove(models.Model):
                 })
 
                 # Save in Signature Verifier
-                safe_name = move.name.replace('/', '_')
+                # Save in Signature Verifier
+                safe_name = str(move.name or 'Draft').replace('/', '_')
+
                 self.env['signature.verifier'].create({
                     'move_id': move.id,
                     'txt_file': base64.b64encode(content.encode('utf-8')),
@@ -122,7 +125,6 @@ class AccountMove(models.Model):
                     'sha_filename': f"{safe_name}_registry.sha1",
                     'signature_string': signature_string,
                 })
-
                 previous_hash = signature_b64
 
         except Exception as e:
