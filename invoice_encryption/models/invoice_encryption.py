@@ -76,6 +76,10 @@ class AccountMove(models.Model):
                 if move.state != 'posted':
                     _logger.debug("Move %s is not posted, skipping", move.name)
                     continue
+                if not move.name or move.name == '/':
+                    continue
+                if move.invoice_sign:
+                    continue
 
                 system_date_str = move.create_date.strftime('%Y-%m-%dT%H:%M:%S')
                 amount_str = "{:.2f}".format(move.amount_total)

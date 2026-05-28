@@ -22,15 +22,17 @@ class SignatureVerifier(models.Model):
     verification_result = fields.Char(string="Verification Result", readonly=True)
     signature_string = fields.Text(string="Signature String", readonly=True)
 
-    @api.model
-    def create(self, vals):
+    @api.model_create_multi
+    def create(self, vals_list):
 
         encryption = self.env['report.encryption'].search([], limit=1)
-        if encryption:
-            vals.setdefault('private_key', encryption.private_key or '')
-            vals.setdefault('public_key', encryption.public_key or '')
-        return super(SignatureVerifier, self).create(vals)
 
+        for vals in vals_list:
+            if encryption:
+                vals.setdefault('private_key', encryption.private_key or '')
+                vals.setdefault('public_key', encryption.public_key or '')
+
+        return super(SignatureVerifier, self).create(vals_list)
     def action_view_content(self):
 
         for rec in self:
