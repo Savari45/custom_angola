@@ -1,2 +1,2 @@
 id,name,model_id:id,group_id,perm_read,perm_create,perm_write,perm_unlink
-access_customer_rules_user,customer_rules,model_customer_rules,,1,1,1,1
+customerrules.access_customer_code_master,access_customer_code_master,customerrules.model_customer_code_master,,1,1,1,1

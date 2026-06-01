@@ -1,5 +1,54 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
+<!--    customer code master views-->
+    <record id="customer_code_master_form_view" model="ir.ui.view">
+        <field name="name">customer.code.master.form</field>
+        <field name="model">customer.code.master</field>
+        <field name="arch" type="xml">
+            <form string="Customer Code Master">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Enter Customer Code"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="customer_name" placeholder="Enter Customer Name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="customer_code_master_tree_view" model="ir.ui.view">
+        <field name="name">customer.code.master.tree</field>
+        <field name="model">customer.code.master</field>
+        <field name="arch" type="xml">
+            <list string="Customer Code Master">
+                <field name="name"/>
+                <field name="customer_name"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="customer_code_master_search_view" model="ir.ui.view">
+        <field name="name">customer.code.master.search</field>
+        <field name="model">customer.code.master</field>
+        <field name="arch" type="xml">
+            <search string="Search Customer Codes">
+                <field name="name"/>
+                <field name="customer_name"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="customer_code_master_action" model="ir.actions.act_window">
+        <field name="name">Customer Code Master</field>
+        <field name="res_model">customer.code.master</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+
     <record id="inherit_customer_views_form" model="ir.ui.view">
         <field name="name">inherit_partner</field>
         <field name="model">res.partner</field>
@@ -14,7 +63,7 @@
                 </xpath>
 
                 <xpath expr="//field[@name='name']" position ="before">
-                    <field name="customercode" placeholder="customer code" required="1" widget="auto_fill"/>
+                    <field name="customer_code_id" placeholder="Select or Create Customer Code" required="1" widget="customer_code_display"/>
                 </xpath>
         </field>
     </record>
@@ -25,7 +74,7 @@
             <field name="inherit_id" ref="base.view_partner_tree"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='avatar_128']" position="before">
-                     <field name="customercode" string="Customer Code" width="50"/>
+                     <field name="customer_code_name" string="Customer Code" width="50"/>
                 </xpath>
             </field></record>
 </odoo>

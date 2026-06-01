@@ -170,25 +170,3 @@ class ProductProduct(models.Model):
             "Duplicating products is not allowed."
         )
 
-    """        
-    @api.onchange('default_code')
-    def _check_unique_productid(self):
-        for record in self:
-            if record.default_code:
-                existing_product1 = self.env['product.template'].search([('default_code', '=', record.default_code)])
-                if existing_product1:
-                    raise ValidationError("A product with the same product ID and internal reference already exists!")
-    
-   @api.constrains('name', 'default_code')
-    def _check_unique_product(self):
-        for record in self:
-            if record.name and record.default_code:
-                existing_product = self.env['product.template'].search([
-                    ('id', '!=', record.id),
-                    ('name', '=', record.name),
-                    ('default_code', '=', record.default_code)
-                ])
-                if existing_product:
-                    raise ValidationError("A product with the same name and internal reference already exists!")
-
-    """
